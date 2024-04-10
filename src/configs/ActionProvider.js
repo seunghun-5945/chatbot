@@ -3,7 +3,7 @@ import React from 'react';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleHello = () => {
-    const botMessage = createChatBotMessage('반갑습니다! 무엇을 도와드릴까요?'); //  hello chatbot 이라고 입력했을 시
+    const botMessage = createChatBotMessage('반갑습니다! 무엇을 도와드릴까요?'); //  안녕 관련 문구를 입력했을 시
 
     setState((prev) => ({
       ...prev,
@@ -11,6 +11,19 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
+  const handleDog = () => {
+    const botMessage = createChatBotMessage(
+      "Here's a nice dog picture for you!",
+      {
+        widget: 'dogPicture',
+      }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+  
   const handleError = () => {
     const botMessage = createChatBotMessage("다른 응답을 부탁드립니다!"); //  잘못된 응답을 했을 시
 
@@ -35,7 +48,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           actions: {
-            handleHello, handleError
+            handleHello, handleError, noSentence, handleDog
           },
         });
       })}

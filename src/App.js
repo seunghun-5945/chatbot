@@ -5,6 +5,7 @@ import config from "./configs/config.js";
 import MessageParser from "./configs/MessageParser.js";
 import ActionProvider from "./configs/ActionProvider.js";
 import 'react-chatbot-kit/build/main.css'
+import './configs/ChatBot.css';
 
 const Container = style.div`
   width: 100%;
@@ -12,9 +13,8 @@ const Container = style.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightsalmon;
+  background-color: white;
 `;
-
 
 const App = () => {
   return (
@@ -23,6 +23,8 @@ const App = () => {
         config={config}
         messageParser={MessageParser}
         actionProvider={ActionProvider}
+        headerText='P&N 챗봇'
+        placeholderText='채탕을 입력하세용'
       />
     </Container>
   );
